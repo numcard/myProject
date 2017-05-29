@@ -55,7 +55,6 @@ public class TPrepod implements Serializable {
     @NotNull
     @Column(name = "ID_teacher")
     private Integer iDteacher;
-    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)

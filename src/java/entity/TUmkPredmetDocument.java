@@ -8,6 +8,7 @@ package entity;
 import java.io.Serializable;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,7 +43,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TUmkPredmetDocument.findByCelPredmet", query = "SELECT t FROM TUmkPredmetDocument t WHERE t.celPredmet = :celPredmet")
     , @NamedQuery(name = "TUmkPredmetDocument.findByIdUmkPredmetDocumentOLD", query = "SELECT t FROM TUmkPredmetDocument t WHERE t.idUmkPredmetDocumentOLD = :idUmkPredmetDocumentOLD")})
 public class TUmkPredmetDocument implements Serializable {
-
+    
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull

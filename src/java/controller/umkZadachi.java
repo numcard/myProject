@@ -7,7 +7,6 @@ package controller;
 
 import entity.TUmkPredmetDocument;
 import java.io.IOException;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +19,7 @@ import session.TUmkPredmetDocumentFacade;
  *
  * @author Александр
  */
-@WebServlet(name = "umkPredmetDocument", urlPatterns = {"/umkPredmetDocument"})
+@WebServlet(name = "zadachi", urlPatterns = {"/zadachi"})
 public class umkZadachi extends HttpServlet 
 {
     @EJB
@@ -33,7 +32,7 @@ public class umkZadachi extends HttpServlet
         String idUmkPredmetDocument = request.getParameter("IDUmkPredmetDocument");
         
         TUmkPredmetDocument doc = TUmkPredmetDocumentFacade.findByID(idUmkPredmetDocument);
-
+        
         getServletContext().setAttribute("TUmkPredmetDocument", doc);
 
         request.getRequestDispatcher("/WEB-INF/views" + request.getServletPath() + ".jsp").forward(request, response);

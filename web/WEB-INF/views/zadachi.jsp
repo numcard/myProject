@@ -9,4 +9,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-${TUmkPredmetDocument.getCelPredmet()}
+<input size="42" type="text" value="${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}"><br>
+<input size="42" type="text" value="${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}"><br>
+<textarea style="margin: 0px; width: 600px; height: 100px;">${TUmkPredmetDocument.getCelPredmet()}</textarea>
