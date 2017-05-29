@@ -24,6 +24,11 @@ public class TRPDZadachiFacade extends AbstractFacade<TRPDZadachi> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    public TRPDZadachi find()
+    {
+        return (TRPDZadachi) em.createNamedQuery("TRPDZadachi.findByIdRPDZadachi").getSingleResult();
+    }
 
     public TRPDZadachiFacade() {
         super(TRPDZadachi.class);

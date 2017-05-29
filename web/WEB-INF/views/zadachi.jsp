@@ -36,11 +36,14 @@
     <tbody>
     <c:forEach var="zadachi" items="${TUmkPredmetDocument.getTRPDZadachiCollection()}">
         <tr>
+            <form action="edit_zadachi">
             <td  class="col-md-5">
-                <textarea class="form-control" rows="3">${zadachi.getRPDZadacha()}</textarea>
+                <textarea class="form-control" name="RPDZadacha" rows="3">${zadachi.getRPDZadacha()}</textarea>
             </td>
             <td  class="col-md-1">
-                <button type="button" class="btn btn-success">Сохранить</button>
+                    <input type="hidden" name="idRPDZadachi" value="${zadachi.getIdRPDZadachi()}">
+                    <input type="submit" class="btn btn-success" value="Сохранить">
+            </form>
                 <button type="button" class="btn btn-danger">Удалить</button>
             </td>
         </tr>
