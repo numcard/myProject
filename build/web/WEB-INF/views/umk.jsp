@@ -9,14 +9,34 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:forEach var="TUmk" items="${TUmk}">
-    <form action="umkPredmet">
-        <input size="12" type="text" value="${TUmk.getNameNapravlSokr()}">
-        <input size="40" type="text" value="${TUmk.getNameNapravl()}">
-        <input size="12" type="text" name="shifrNapravl" value="${TUmk.getShifrNapravl()}">
-        <input size="24" type="text" value="${TUmk.getKvalifikac()}">
-        <input size="12" type="text" value="${TUmk.getProfil()}">
-        <input size="12" type="text" value="${TUmk.getFormaObuch()}">
-        <input type="submit" value="Select"> 
-    </form>
-</c:forEach>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Направл. сокр.</th>
+        <th>Направление</th>
+        <th>Номер направления</th>
+        <th>Квалификация</th>
+        <th>Профиль</th>
+        <th>Форма обучения</th>
+        <th>*</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="TUmk" items="${TUmk}">
+        <tr>
+            <td>${TUmk.getNameNapravlSokr()}</td>
+            <td>${TUmk.getNameNapravl()}</td>
+            <td>${TUmk.getShifrNapravl()}</td>
+            <td>${TUmk.getKvalifikac()}</td>
+            <td>${TUmk.getProfil()}</td>
+            <td>${TUmk.getFormaObuch()}</td>
+            <td>
+                <form action="umkPredmet">
+                    <input type="hidden" name="shifrNapravl" value="${TUmk.getShifrNapravl()}">
+                    <input type="submit" class="btn btn-default" value="Выбрать"> 
+                </form>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>

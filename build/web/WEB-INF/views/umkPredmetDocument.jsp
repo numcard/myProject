@@ -9,16 +9,32 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:forEach var="TUmkPredmetDocument" items="${TUmkPredmetDocument}">
-    <nobr>
-    <input size="38" type="text" value="${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}">
-    <input size="14" type="text" value="${TUmkPredmetDocument.getVidDocum().getVidDocum()}">
-    <input size="6" type="text" value="${TUmkPredmetDocument.getDataDocum()}">
-    <input size="8" type="text" value="${TUmkPredmetDocument.getStatus()}">
-    <input size="28" type="text" value="${TUmkPredmetDocument.getPrepod().getSurName()} ${TUmkPredmetDocument.getPrepod().getName()} ${TUmkPredmetDocument.getPrepod().getPatronymic()}">
-    <form action="zadachi" style="display: inline;">
-        <input type="hidden" name="IDUmkPredmetDocument" value="${TUmkPredmetDocument.getIdUmkPredmetDocument()}">
-        <input type="submit" value="Задачи"> 
-    </form>
-    </nobr>
-</c:forEach>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Предмет</th>
+        <th>Вид документа</th>
+        <th>Дата</th>
+        <th>Статус</th>
+        <th>Ответственный</th>
+        <th>*</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="TUmkPredmetDocument" items="${TUmkPredmetDocument}">
+        <tr>
+            <td><button type="button" class="btn btn-info">${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}</button></td>
+            <td>${TUmkPredmetDocument.getVidDocum().getVidDocum()}</td>
+            <td>${TUmkPredmetDocument.getDataDocum()}</td>
+            <td>${TUmkPredmetDocument.getStatus()}</td>
+            <td>${TUmkPredmetDocument.getPrepod().getSurName()} ${TUmkPredmetDocument.getPrepod().getName()} ${TUmkPredmetDocument.getPrepod().getPatronymic()}</td>
+            <td>
+                <form action="zadachi">
+                    <input type="hidden" name="IDUmkPredmetDocument" value="${TUmkPredmetDocument.getIdUmkPredmetDocument()}">
+                    <input type="submit" class="btn btn-default" value="Задачи"> 
+                </form>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>

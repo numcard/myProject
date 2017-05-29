@@ -9,9 +9,36 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<input size="42" type="text" value="${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}"><br>
-<input size="42" type="text" value="${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}"><br>
-<textarea style="margin: 0px; width: 600px; height: 100px;">${TUmkPredmetDocument.getCelPredmet()}</textarea><br>
-<c:forEach var="zadachi" items="${TUmkPredmetDocument.getTRPDZadachiCollection()}">
-    <textarea style="margin: 0px; width: 600px; height: 100px;">${zadachi.getRPDZadacha()}</textarea><br>
-</c:forEach>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер направления</th>
+        <th>Дисциплина</th>
+        <th>Цель РПД</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><button type="button" class="btn btn-info">${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}</button></td>
+            <td><button type="button" class="btn btn-info">${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}</button></td>
+            <td>${TUmkPredmetDocument.getCelPredmet()}</td>
+        </tr>
+    </tbody>
+</table>
+        
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Задачи в РПД</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="zadachi" items="${TUmkPredmetDocument.getTRPDZadachiCollection()}">
+        <tr>
+            <td>
+                <textarea class="form-control" rows="3">${zadachi.getRPDZadacha()}</textarea>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>

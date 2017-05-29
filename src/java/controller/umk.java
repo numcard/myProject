@@ -20,7 +20,7 @@ import session.TUmkFacade;
  *
  * @author Александр
  */
-@WebServlet(name = "umk", urlPatterns = {"/umk"})
+@WebServlet(name = "umk", urlPatterns = {"/", "/umk"})
 public class umk extends HttpServlet {
 
     @EJB
@@ -35,7 +35,7 @@ public class umk extends HttpServlet {
 
         getServletContext().setAttribute("TUmk", TUmkList);
         System.out.println(request.getServletPath());
-        request.getRequestDispatcher("/WEB-INF/views" + request.getServletPath() + ".jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/umk.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

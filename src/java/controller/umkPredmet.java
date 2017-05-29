@@ -36,6 +36,7 @@ public class umkPredmet extends HttpServlet {
         numNapravl = new String(bytes, StandardCharsets.UTF_8);
 
         List<TUmkTPredmet> TUmkTPredmetList = TUmkTPredmetFacade.findAllByNumNapravl(numNapravl);
+        getServletContext().setAttribute("shifrNapravl", numNapravl);
         getServletContext().setAttribute("TUmkTPredmet", TUmkTPredmetList);
         
         request.getRequestDispatcher("/WEB-INF/views" + request.getServletPath() + ".jsp").forward(request, response);
