@@ -18,7 +18,6 @@
     <input size="28" type="text" value="${TUmkPredmetDocument.getPrepod().getSurName()} ${TUmkPredmetDocument.getPrepod().getName()} ${TUmkPredmetDocument.getPrepod().getPatronymic()}">
     <form action="zadachi" style="display: inline;">
         <input type="hidden" name="IDUmkPredmetDocument" value="${TUmkPredmetDocument.getIdUmkPredmetDocument()}">
-        <input type="hidden" name="IDPredmet" value="${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getIDPredmet()}">
         <input type="submit" value="Задачи"> 
     </form>
     </nobr>

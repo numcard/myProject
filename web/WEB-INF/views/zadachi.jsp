@@ -11,4 +11,7 @@
 
 <input size="42" type="text" value="${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}"><br>
 <input size="42" type="text" value="${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}"><br>
-<textarea style="margin: 0px; width: 600px; height: 100px;">${TUmkPredmetDocument.getCelPredmet()}</textarea>
+<textarea style="margin: 0px; width: 600px; height: 100px;">${TUmkPredmetDocument.getCelPredmet()}</textarea><br>
+<c:forEach var="zadachi" items="${TUmkPredmetDocument.getTRPDZadachiCollection()}">
+    <textarea style="margin: 0px; width: 600px; height: 100px;">${zadachi.getRPDZadacha()}</textarea><br>
+</c:forEach>

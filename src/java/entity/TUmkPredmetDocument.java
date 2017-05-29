@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,6 +26,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -43,6 +45,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TUmkPredmetDocument.findByCelPredmet", query = "SELECT t FROM TUmkPredmetDocument t WHERE t.celPredmet = :celPredmet")
     , @NamedQuery(name = "TUmkPredmetDocument.findByIdUmkPredmetDocumentOLD", query = "SELECT t FROM TUmkPredmetDocument t WHERE t.idUmkPredmetDocumentOLD = :idUmkPredmetDocumentOLD")})
 public class TUmkPredmetDocument implements Serializable {
+
+    /*@Column(name = "Prepod")
+    private Integer prepod;*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUmkPredmetDocument")
+    private Collection<TRPDZadachi> tRPDZadachiCollection;
     
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -194,6 +201,23 @@ public class TUmkPredmetDocument implements Serializable {
     @Override
     public String toString() {
         return "entity.TUmkPredmetDocument[ idUmkPredmetDocument=" + idUmkPredmetDocument + " ]";
+    }
+
+    /*public Integer getPrepod() {
+        return prepod;
+    }
+
+    public void setPrepod(Integer prepod) {
+        this.prepod = prepod;
+    }*/
+
+    @XmlTransient
+    public Collection<TRPDZadachi> getTRPDZadachiCollection() {
+        return tRPDZadachiCollection;
+    }
+
+    public void setTRPDZadachiCollection(Collection<TRPDZadachi> tRPDZadachiCollection) {
+        this.tRPDZadachiCollection = tRPDZadachiCollection;
     }
     
 }

@@ -32,7 +32,7 @@ public class umkZadachi extends HttpServlet
         String idUmkPredmetDocument = request.getParameter("IDUmkPredmetDocument");
         
         TUmkPredmetDocument doc = TUmkPredmetDocumentFacade.findByID(idUmkPredmetDocument);
-        
+
         getServletContext().setAttribute("TUmkPredmetDocument", doc);
 
         request.getRequestDispatcher("/WEB-INF/views" + request.getServletPath() + ".jsp").forward(request, response);
