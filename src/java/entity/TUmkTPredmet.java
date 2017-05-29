@@ -30,9 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TUmkTPredmet.findAll", query = "SELECT t FROM TUmkTPredmet t")
     , @NamedQuery(name = "TUmkTPredmet.findByNumPorjadok", query = "SELECT t FROM TUmkTPredmet t WHERE t.numPorjadok = :numPorjadok")
     , @NamedQuery(name = "TUmkTPredmet.findByIDUmkPredmet", query = "SELECT t FROM TUmkTPredmet t WHERE t.iDUmkPredmet = :iDUmkPredmet")
-    , @NamedQuery(name = "TUmkTPredmet.findByIDUmkPredmetOLD", query = "SELECT t FROM TUmkTPredmet t WHERE t.iDUmkPredmetOLD = :iDUmkPredmetOLD")
-    , @NamedQuery(name = "TUmkTPredmet.findByPrBRS", query = "SELECT t FROM TUmkTPredmet t WHERE t.prBRS = :prBRS")
-    , @NamedQuery(name = "TUmkTPredmet.findByPrLiterOK", query = "SELECT t FROM TUmkTPredmet t WHERE t.prLiterOK = :prLiterOK")})
+    , @NamedQuery(name = "TUmkTPredmet.findByIDUmkPredmetOLD", query = "SELECT t FROM TUmkTPredmet t WHERE t.iDUmkPredmetOLD = :iDUmkPredmetOLD")})
 public class TUmkTPredmet implements Serializable {    
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -47,12 +45,6 @@ public class TUmkTPredmet implements Serializable {
     private Integer iDUmkPredmet;
     @Column(name = "IDUmkPredmetOLD")
     private Integer iDUmkPredmetOLD;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "prBRS")
-    private boolean prBRS;
-    @Column(name = "prLiterOK")
-    private Boolean prLiterOK;
     @JoinColumn(name = "IDPredmet", referencedColumnName = "IDPredmet")
     @ManyToOne(optional = false)
     private TPredmet iDPredmet;
@@ -76,7 +68,6 @@ public class TUmkTPredmet implements Serializable {
     public TUmkTPredmet(Integer iDUmkPredmet, String numPorjadok, boolean prBRS) {
         this.iDUmkPredmet = iDUmkPredmet;
         this.numPorjadok = numPorjadok;
-        this.prBRS = prBRS;
     }
 
     public String getNumPorjadok() {
@@ -101,22 +92,6 @@ public class TUmkTPredmet implements Serializable {
 
     public void setIDUmkPredmetOLD(Integer iDUmkPredmetOLD) {
         this.iDUmkPredmetOLD = iDUmkPredmetOLD;
-    }
-
-    public boolean getPrBRS() {
-        return prBRS;
-    }
-
-    public void setPrBRS(boolean prBRS) {
-        this.prBRS = prBRS;
-    }
-
-    public Boolean getPrLiterOK() {
-        return prLiterOK;
-    }
-
-    public void setPrLiterOK(Boolean prLiterOK) {
-        this.prLiterOK = prLiterOK;
     }
 
     public TPredmet getIDPredmet() {

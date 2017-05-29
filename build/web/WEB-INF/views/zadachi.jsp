@@ -30,15 +30,28 @@
     <thead>
     <tr>
         <th>Задачи в РПД</th>
+        <th>Действия</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach var="zadachi" items="${TUmkPredmetDocument.getTRPDZadachiCollection()}">
         <tr>
-            <td>
+            <td  class="col-md-5">
                 <textarea class="form-control" rows="3">${zadachi.getRPDZadacha()}</textarea>
+            </td>
+            <td  class="col-md-1">
+                <button type="button" class="btn btn-success">Сохранить</button>
+                <button type="button" class="btn btn-danger">Удалить</button>
             </td>
         </tr>
     </c:forEach>
+        <tr>
+            <td  class="col-md-5">
+                <textarea class="form-control" rows="3"></textarea>
+            </td>
+            <td  class="col-md-1">
+                <button type="button" class="btn btn-success">Сохранить</button>
+            </td>
+        </tr>
     </tbody>
 </table>
