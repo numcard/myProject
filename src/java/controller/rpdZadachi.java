@@ -9,7 +9,6 @@ import entity.TRPDZadachi;
 import entity.TUmkPredmetDocument;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -24,7 +23,7 @@ import session.TUmkPredmetDocumentFacade;
  *
  * @author Александр
  */
-@WebServlet(name = "zadachi", urlPatterns = {"/zadachi", "/edit_zadachi", "/add_zadachi"})
+@WebServlet(name = "zadachi", urlPatterns = {"/zadachi", "/edit_zadachi", "/add_zadachi", "/delete_zadachi"})
 public class rpdZadachi extends HttpServlet 
 {
     @EJB
@@ -97,6 +96,23 @@ public class rpdZadachi extends HttpServlet
             
             //redirect back
             response.sendRedirect("/myProject/zadachi?IDUmkPredmetDocument=" + idUmkPredmetDocument); 
+        }
+        else if(userPath.equals("/delete_zadachi"))
+        {
+            // get Parametrs
+            int idRPDZadachi;
+            
+            idRPDZadachi = Integer.parseInt(request.getParameter("idRPDZadachi"));
+            
+            // find TRPDZadachi
+            TRPDZadachi zadachi = TRPDZadachiFacade.find(idRPDZadachi);
+            int id = zadachi.getIdUmkPredmetDocument().getIdUmkPredmetDocument();
+            
+            // remove
+            TRPDZadachiFacade.remove(zadachi);
+            
+            //redirect back
+            response.sendRedirect("/myProject/zadachi?IDUmkPredmetDocument=" + id); 
         }
     }
 

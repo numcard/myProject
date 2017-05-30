@@ -19,8 +19,16 @@
     </thead>
     <tbody>
         <tr>
-            <td><button type="button" class="btn btn-info">${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}</button></td>
-            <td><button type="button" class="btn btn-info">${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}</button></td>
+            <td>
+                <a href="./umkPredmet?shifrNapravl=${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}" class="btn btn-info">
+                    ${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}
+                </a>
+            </td>
+            <td>
+                <a href ="./umkPredmetDocument?IDUmkPredmet=${TUmkPredmetDocument.getIDUmkPredmet().getIDUmkPredmet()}" class="btn btn-info">
+                    ${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}
+                </a>
+            </td>
             <td>${TUmkPredmetDocument.getCelPredmet()}</td>
         </tr>
     </tbody>
@@ -36,7 +44,7 @@
     <tbody>
     <c:forEach var="zadachi" items="${TRPDZadachi}">
         <tr>
-            <form action="edit_zadachi">
+        <form action="edit_zadachi">
             <td  class="col-md-5">
                 <textarea class="form-control" name="RPDZadacha" rows="3">${zadachi.getRPDZadacha()}</textarea>
             </td>
@@ -44,7 +52,10 @@
                     <input type="hidden" name="idRPDZadachi" value="${zadachi.getIdRPDZadachi()}">
                     <input type="submit" class="btn btn-success" value="Сохранить">
             </form>
-                <button type="button" class="btn btn-danger">Удалить</button>
+            <form action="delete_zadachi" style="display: inline">
+                <input type="hidden" name="idRPDZadachi" value="${zadachi.getIdRPDZadachi()}">
+                <input type="submit" class="btn btn-danger" value="Удалить">
+            </form>
             </td>
         </tr>
     </c:forEach>

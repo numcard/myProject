@@ -23,7 +23,11 @@
     <tbody>
     <c:forEach var="TUmkPredmetDocument" items="${TUmkPredmetDocument}">
         <tr>
-            <td><button type="button" class="btn btn-info">${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}</button></td>
+            <td>
+                <a href="umkPredmet?shifrNapravl=${TUmkPredmetDocument.getIDUmkPredmet().getNumNapravl().getShifrNapravl()}" class="btn btn-info">
+                    ${TUmkPredmetDocument.getIDUmkPredmet().getIDPredmet().getNamePredmet()}
+                </a>
+            </td>
             <td>${TUmkPredmetDocument.getVidDocum().getVidDocum()}</td>
             <td>${TUmkPredmetDocument.getDataDocum()}</td>
             <td>${TUmkPredmetDocument.getStatus()}</td>

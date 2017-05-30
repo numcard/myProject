@@ -23,7 +23,7 @@
     <tbody>
     <c:forEach var="TUmkTPredmet" items="${TUmkTPredmet}">
         <tr>
-            <td><button type="button" class="btn btn-info">${TUmkTPredmet.getNumNapravl().getShifrNapravl()}</button></td>
+            <td><a href="./" class="btn btn-info">${TUmkTPredmet.getNumNapravl().getShifrNapravl()}</a></td>
             <td>${TUmkTPredmet.getNumUchCikl().getNumUchCikl()}</td>
             <td>${TUmkTPredmet.getNumPorjadok()}</td>
             <td>${TUmkTPredmet.getIDPredmet().getNamePredmet()}</td>
