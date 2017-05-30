@@ -6,6 +6,8 @@
 package session;
 
 import entity.TRPDZadachi;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,14 +26,23 @@ public class TRPDZadachiFacade extends AbstractFacade<TRPDZadachi> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    public TRPDZadachi find()
-    {
-        return (TRPDZadachi) em.createNamedQuery("TRPDZadachi.findByIdRPDZadachi").getSingleResult();
-    }
 
     public TRPDZadachiFacade() {
         super(TRPDZadachi.class);
     }
-    
+
+    public List<TRPDZadachi> findAllByIDPredmetDocument(String idUmkPredmetDocument) 
+    {
+        int id = Integer.parseInt(idUmkPredmetDocument);
+        List<TRPDZadachi> list = em.createNamedQuery("TRPDZadachi.findAll").getResultList();
+        List<TRPDZadachi> newList = new ArrayList<>();
+        
+        for(TRPDZadachi o: list)
+        {
+            if(o.getIdUmkPredmetDocument().getIdUmkPredmetDocument() == id)
+                newList.add(o);
+        }
+        
+        return newList;
+    }
 }

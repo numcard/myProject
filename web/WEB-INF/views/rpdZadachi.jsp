@@ -34,7 +34,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="zadachi" items="${TUmkPredmetDocument.getTRPDZadachiCollection()}">
+    <c:forEach var="zadachi" items="${TRPDZadachi}">
         <tr>
             <form action="edit_zadachi">
             <td  class="col-md-5">
@@ -49,12 +49,15 @@
         </tr>
     </c:forEach>
         <tr>
-            <td  class="col-md-5">
-                <textarea class="form-control" rows="3"></textarea>
-            </td>
-            <td  class="col-md-1">
-                <button type="button" class="btn btn-success">Сохранить</button>
-            </td>
+            <form action="add_zadachi">
+                <input type="hidden" name="idUmkPredmetDocument" value="${TUmkPredmetDocument.getIdUmkPredmetDocument()}">
+                <td  class="col-md-5">
+                    <textarea class="form-control" name="RPDZadacha" rows="3"></textarea>
+                </td>
+                <td  class="col-md-1">
+                    <input type="submit" class="btn btn-success" value="Сохранить">
+                </td>
+            </form>
         </tr>
     </tbody>
 </table>

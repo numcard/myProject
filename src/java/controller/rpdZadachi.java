@@ -9,6 +9,8 @@ import entity.TRPDZadachi;
 import entity.TUmkPredmetDocument;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +24,7 @@ import session.TUmkPredmetDocumentFacade;
  *
  * @author Александр
  */
-@WebServlet(name = "zadachi", urlPatterns = {"/zadachi", "/edit_zadachi"})
+@WebServlet(name = "zadachi", urlPatterns = {"/zadachi", "/edit_zadachi", "/add_zadachi"})
 public class rpdZadachi extends HttpServlet 
 {
     @EJB
@@ -42,10 +44,12 @@ public class rpdZadachi extends HttpServlet
             String idUmkPredmetDocument = request.getParameter("IDUmkPredmetDocument");
         
             TUmkPredmetDocument doc = TUmkPredmetDocumentFacade.findByID(idUmkPredmetDocument);
-
+            List<TRPDZadachi> zadachi = TRPDZadachiFacade.findAllByIDPredmetDocument(idUmkPredmetDocument);
+            
             getServletContext().setAttribute("TUmkPredmetDocument", doc);
+            getServletContext().setAttribute("TRPDZadachi", zadachi);
 
-            request.getRequestDispatcher("/WEB-INF/views/zadachi.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/rpdZadachi.jsp").forward(request, response);
         }
         else if(userPath.equals("/edit_zadachi"))
         {
@@ -69,6 +73,30 @@ public class rpdZadachi extends HttpServlet
             
             //redirect back
             response.sendRedirect("/myProject/zadachi?IDUmkPredmetDocument=" + zadachi.getIdUmkPredmetDocument().getIdUmkPredmetDocument()); 
+        }
+        else if(userPath.equals("/add_zadachi"))
+        {
+            // get Parametrs
+            String RPDZadacha;
+            int idUmkPredmetDocument;
+            
+            byte[] bytes = request.getParameter("RPDZadacha").getBytes(StandardCharsets.ISO_8859_1); 
+            RPDZadacha = new String(bytes, StandardCharsets.UTF_8);
+            
+            idUmkPredmetDocument = Integer.parseInt(request.getParameter("idUmkPredmetDocument"));
+            
+            // create TRPDZadachi
+            TRPDZadachi zadachi = new TRPDZadachi();
+            
+            // replace
+            zadachi.setRPDZadacha(RPDZadacha);
+            zadachi.setIdUmkPredmetDocument(TUmkPredmetDocumentFacade.find(idUmkPredmetDocument));
+
+            //save
+            TRPDZadachiFacade.create(zadachi);
+            
+            //redirect back
+            response.sendRedirect("/myProject/zadachi?IDUmkPredmetDocument=" + idUmkPredmetDocument); 
         }
     }
 

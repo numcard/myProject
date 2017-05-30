@@ -62,6 +62,15 @@ public class TUmkPredmetDocumentFacade extends AbstractFacade<TUmkPredmetDocumen
         return newList;
     }
 
+    public TUmkPredmetDocument findByID(int idUmkPredmetDocument)
+    {
+        Object obj = em.createNamedQuery("TUmkPredmetDocument.findByIdUmkPredmetDocument")
+                .setParameter("idUmkPredmetDocument", idUmkPredmetDocument)
+                .getSingleResult();
+        
+        return (TUmkPredmetDocument) obj;
+    }
+    
     public TUmkPredmetDocument findByID(String idUmkPredmetDocument) 
     {
         int idDoc = -1;
@@ -76,10 +85,6 @@ public class TUmkPredmetDocumentFacade extends AbstractFacade<TUmkPredmetDocumen
         if(idDoc == -1)
             return new TUmkPredmetDocument();
         
-        Object obj = em.createNamedQuery("TUmkPredmetDocument.findByIdUmkPredmetDocument")
-                .setParameter("idUmkPredmetDocument", idDoc)
-                .getSingleResult();
-        
-        return (TUmkPredmetDocument) obj;
+        return findByID(idDoc);
     }
 }
